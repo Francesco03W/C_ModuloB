@@ -1,5 +1,3 @@
-#include <stdio.h>
-#include <string.h> //usato per confrontare le stringhe
 
 typedef struct{
     char nome[20];

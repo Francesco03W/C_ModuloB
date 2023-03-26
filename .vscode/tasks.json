@@ -8,9 +8,7 @@
 			"args": [
 				"-fdiagnostics-color=always",
 				"-g",
-				"${workspaceFolder}/Es7/main.c",
-				"${workspaceFolder}/Es7/interface.c",
-				"${workspaceFolder}/Es7/interface.h",
+				"${workspaceFolder}/Es8/main.c",
 				"-o",
 				"${fileDirname}/${fileBasenameNoExtension}"
 			],

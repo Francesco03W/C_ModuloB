@@ -4,11 +4,14 @@
 #include <string.h>
 
 //funzione di compare per ordinare la tabella rispetto a cognome e nome, sempre per cognome, e se due cognomi sono uguali allora per nome
+//gli argomenti di keycompare sono puntatori a puntatori
 int keyCompare(const void *el1, const void *el2)
 {
     Contatto c1,c2;
+    // el1/2 viene dereferenziato a puntatore a "contatto" e a sua volta
+    // dereferenziato al contenuto della memoria puntata da quest'ultimo
     c1=*(Contatto*)el1;
-    c2=*(Contatto*)el2; //NON CHIARO
+    c2=*(Contatto*)el2; 
     int compare=strcmp(c1.cognome,c2.cognome);
     if(compare!=0)
     {
@@ -18,10 +21,6 @@ int keyCompare(const void *el1, const void *el2)
     {
         return strcmp(c1.nome,c2.nome);
     }
-
-
-
-
 }
 
 
