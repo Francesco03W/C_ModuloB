@@ -16,24 +16,24 @@ Il programma deve essere opportunamente strutturato su più file
 */
 
 /*cosa ho imparato:
-- usare build per tasks.json (usa sempre workspace)
-- usare la qsort, come passare i parametri e usare cast
-- mettere strutture in file .h
+- IMPORTANTE PER DEBUGGARE IN ESAME:  usare build per tasks.json (usa sempre workspace)
+- usare la qsort, come passare i parametri e usare cast con ATTENZIONE alle stringhe
+- mettere dichiarazione delle strutture/ tipi di dato astratti in file header, insieme alle dichiarazioni di funzioni
 
 */
 
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "interface.h" //struct contatto e TavolaContatti
-#include <stdlib.h>
+#include "interface.h" //contiene typedef struct contatto e TavolaContatti
 
-typedef enum {false,true} Boolean;
-TavolaContatti Tavola;
+typedef enum {false,true} Boolean; //enumeratore assegna in ordine valori da 0 a n in base all'n
+// numero di possibili valori assunti dalle variabili di tipo Boolean
+TavolaContatti Tavola; //array di 100 Contatti
 
 char interface()
 {
-    printf("Immettere 1 per inserire un contatto,2 per stampare la rubrica, qualsiasi altro numero per uscire\n");
+    printf("Immettere 1 per inserire un contatto,2 per stampare la rubrica, 3 per cercare un contatto in base al nome,  qualsiasi altro numero per uscire\n");
     char input;
     scanf(" %c",&input);
 
@@ -56,7 +56,10 @@ int main()
             case '2':
                 printTable(Tavola,logicindex);
                 break;
-            default:
+            case '3':
+		findContact(Tavola,logicindex);
+	   	break;
+  	    default:
                 exit=true;
                 break;
         }

@@ -4,7 +4,7 @@ typedef struct list_element{
 	//puntatore ad un prossimo "item"
     struct list_element* next;
 } item;
-typedef enum {false,true} Boolean;
+
 typedef item* list; //TIPO e NON  variabile, è sbagliato scrivere solo item* List;
 //nei file di header bisogna costruire i tipi di dato astratti che si intende usare nel codice dei
 //file .c in cui viene incluso

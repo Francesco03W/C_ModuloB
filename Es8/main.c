@@ -58,7 +58,7 @@ void funzioneAB(studenti S,nome* V,FILE* fd)
     {
         fscanf(fd,"%s %s",S[i].nome,S[i].cognome);
         strcpy(V[i],S[i].nome);
-    }    
+    }
     fclose(fd);
 }
 

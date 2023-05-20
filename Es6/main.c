@@ -2,7 +2,7 @@
 #define dim 30
 #include "insert.h"
 
-typedef enum {true,false} Boolean;
+typedef enum {false,true} Boolean;
 
 // USO UNA RICERCA LINEARE DELL'ARRAY, DATO CHE SI TRATTA DI UN ARRAY DI PICCOLE DIMENSIONI
 void printIntArray(int* array,int logicindex)

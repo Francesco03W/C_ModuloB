@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 
-typedef enum{true,false} Boolean;
+typedef enum{false,true} Boolean;
 
 void insert(int *array, int logicindex, int number)
 {

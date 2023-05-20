@@ -1,7 +1,7 @@
 #include "modules.h"
 #include <stdio.h>
 #include <stdlib.h>
-
+typedef enum {false,true} Boolean;
 void interface()
 {
     Boolean close=false;
@@ -31,23 +31,28 @@ void interface()
             L=userInput(L); 
             break;
         }
-        case '2':showList(L);break;
-        case '3':
+        case '2':showList(L);break; //r
+        case '3': //r
         {
             printf("Inserire valore da cercare nella lista\n");
             int n;
+	    int found;
             scanf(" %d",&n);
-            memberList(n,L);
-            break;
+            found=memberList(n,L);
+	    if(found==1)
+		printf("Elemento trovato\n");
+	    else
+		printf("Elemento non trovato\n");
+        break;
         }
-        case '4':
+        case '4': //r
         {
             int somma=0;
             somma=sumList(L);
             printf("La somma dei valori della lista è %d\n",somma);
             break;
         }
-        case '5':
+        case '5': //r
         {
             int count=0;
             count=lengthList(L);
@@ -60,36 +65,53 @@ void interface()
 int lengthList(list L)
 {
     item* elem=L;
-    int count=0;
-    while(elem!=NULL)
+    if(elem->next==NULL)
     {
-        count++;
-        elem=elem->next;
+        return 1;
     }
-    return count;
+    else {
+        return lengthList(elem->next)+1;
+    }
+
+
+
 }
 int sumList(list L)
 {
     item* elem=L;
-    int sum=0;
-    while(elem!=NULL) //se non ci sono elementi ritorna 0
+
+    if(elem->next==NULL)
     {
-        sum=sum+elem->value;
-        elem=elem->next; //scorro elemento succ
+        return elem->value;
     }
-    return sum;
+    else
+    {
+        return sumList(elem->next)+elem->value;
+    }
+
 }
+
 
 int  memberList(int n, list L)
 { 
-        while(L!=NULL)
+   item* elem=L;
+//se si è arrivati alla fine non è stato trovato il valore cercato	   
+    
+    if(elem->value != n)
+    {
+        if(elem->next==NULL)
         {
-            if(L->value==n)
-            return 1;
-            else
-                L=L->next;
             return 0;
+	    }
+        else {
+            return memberList(n,elem->next);
         }
+            
+    }
+    else
+    {
+	return 1;
+    }
 
 }
 
@@ -98,13 +120,15 @@ void showList(list L)
     //iterativa
     //faccio finta di non conoscere la lunghezza
     
-    item* elem=L; //parto dal primo elemento
-    while(elem!=NULL)
-    {
-        printf(" val:%d -",elem->value);
-        elem=elem->next;
-    }
-    printf("\n");
+   item* elem=L;
+   
+   if(elem!=NULL)
+   {
+    printf("Elemento %d",elem->value);
+    showList(elem->next);
+   }
+    
+    
 }
 
 

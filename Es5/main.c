@@ -5,7 +5,7 @@
 #include "modules.h"
 
 // typedef float ELEMENT;
-typedef enum {true,false} Boolean;
+typedef enum {false,true} Boolean;
 
 int main()
 {
